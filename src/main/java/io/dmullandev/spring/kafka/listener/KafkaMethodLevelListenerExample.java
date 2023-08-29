@@ -1,4 +1,4 @@
-package io.dmullandev.spring.kafka.listeners;
+package io.dmullandev.spring.kafka.listener;
 
 import static io.dmullandev.spring.kafka.constants.ApplicationConstants.GROUP_TOPIC_NAME_2;
 import static io.dmullandev.spring.kafka.constants.ApplicationConstants.GROUP_TOPIC_NAME_3;
@@ -16,7 +16,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;;
 
 @Component
-public class KafkaListenersExample {
+public class KafkaMethodLevelListenerExample {
 
     private static final Logger LOG = LogManager.getLogger();
 

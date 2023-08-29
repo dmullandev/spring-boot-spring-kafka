@@ -1,4 +1,4 @@
-package io.dmullandev.spring.kafka.listeners;
+package io.dmullandev.spring.kafka.listener;
 
 import static io.dmullandev.spring.kafka.constants.ApplicationConstants.TOPIC_NAME_3;
 

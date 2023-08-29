@@ -1,4 +1,4 @@
-package io.dmullandev.spring.kafka.senders;
+package io.dmullandev.spring.kafka.sender;
 
 import static io.dmullandev.spring.kafka.constants.ApplicationConstants.TOPIC_NAME_1;
 
@@ -39,5 +39,6 @@ public class KafkaSenderExample {
                 LOG.warn("Unable to deliver message [{}]. {}", message, exception.getMessage());
             }
         });
+        // future.compl
     }
 }
