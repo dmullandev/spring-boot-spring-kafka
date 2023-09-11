@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 public class KafkaConsumer {
     private static final Logger log = LogManager.getLogger(KafkaConsumer.class);
 
-    @KafkaListener(topics = "timestamp")
+    @KafkaListener(topics = "io-dmullandev-timestamp")
     void listener(String timestamp) {
-        log.info("Received: {}", timestamp);
+        log.info("Receiving String: {}", timestamp);
     }
 }

@@ -17,7 +17,7 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 
 public class ConsumerConfiguration {
 
-    @Value("${kafka.bootstrap-servers}")
+    @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
     @Bean
@@ -42,7 +42,7 @@ public class ConsumerConfiguration {
 
     @Bean
     public NewTopic timestampTopic() {
-        return TopicBuilder.name("timestamp")
+        return TopicBuilder.name("io-dmullandev-timestamp")
                            .build();
     }
 

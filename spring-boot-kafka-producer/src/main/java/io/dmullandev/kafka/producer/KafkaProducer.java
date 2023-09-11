@@ -21,14 +21,14 @@ public class KafkaProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    void sendMessage(String message, String topicName) {
+    void sendMessage(String topicName, String message) {
         kafkaTemplate.send(topicName, message);
     }
 
     @Scheduled(fixedRate = 5000)
     public void reportCurrentTime() {
         String timestamp = dateTimeFormat.format(LocalDateTime.now());
-        sendMessage(timestamp, "timestamp");
+        sendMessage("io-dmullandev-timestamp", timestamp);
         log.info("Sent: {}", timestamp);
     }
 }
