@@ -1,5 +1,8 @@
 package io.dmullandev.kafka.producer.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +16,10 @@ import io.dmullandev.kafka.model.BusinessObject;
 @RequestMapping("api/v1/businessobjects")
 public class KafkaProducerController {
 
+    @Autowired
     private KafkaTemplate<String, BusinessObject> kafkaTemplateBusinessObject;
+
+    private static final Logger LOG = LogManager.getLogger(KafkaProducerController.class);
 
     public KafkaProducerController(KafkaTemplate<String, BusinessObject> kafkaTemplateBusinessObject) {
         this.kafkaTemplateBusinessObject = kafkaTemplateBusinessObject;
@@ -21,7 +27,7 @@ public class KafkaProducerController {
 
     @PostMapping
     public void publish(@RequestBody BusinessObject businessObject) {
-
+        LOG.info("Received business object {}", businessObject);
         kafkaTemplateBusinessObject.send(KafkaAppConstants.APP_TOPIC_BUSINESSOBJECT, businessObject);
     }
 

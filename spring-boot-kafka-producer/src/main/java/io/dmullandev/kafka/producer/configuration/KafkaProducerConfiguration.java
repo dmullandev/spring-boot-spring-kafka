@@ -8,13 +8,18 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-public class ProducerConfiguration {
+import io.dmullandev.kafka.constants.KafkaAppConstants;
+import io.dmullandev.kafka.model.BusinessObject;
+
+@Configuration
+public class KafkaProducerConfiguration {
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
@@ -43,7 +48,7 @@ public class ProducerConfiguration {
     }
 
     @Bean
-    public ProducerFactory<String, Object> producerFactoryBusinessObject() {
+    public ProducerFactory<String, BusinessObject> producerFactoryBusinessObject() {
         return new DefaultKafkaProducerFactory<>(producerConfigsBusinessObject());
     }
 
@@ -53,7 +58,7 @@ public class ProducerConfiguration {
     }
 
     @Bean
-    public KafkaTemplate<String, Object> kafkaTemplateBusinessObject() {
+    public KafkaTemplate<String, BusinessObject> kafkaTemplateBusinessObject() {
         return new KafkaTemplate<>(producerFactoryBusinessObject());
     }
 
@@ -65,7 +70,7 @@ public class ProducerConfiguration {
 
     @Bean
     public NewTopic topicBusinessObject() {
-        return TopicBuilder.name("io-dmullandev-businessObject")
+        return TopicBuilder.name(KafkaAppConstants.APP_TOPIC_BUSINESSOBJECT)
                            .build();
     }
 
