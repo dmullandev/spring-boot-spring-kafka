@@ -1,7 +1,7 @@
 # spring-boot-spring-kafka
 Integration of a Spring Boot application with Apache Kafka, sending and consuming messages from the appliction.
 
-[<img alt="Spring Boot with Kafka diagram" src="https://github.com/dmullandev/spring-boot-spring-kafka/blob/main/docs/spring-boot-kafka-diagrams.PNG"/>](https://app.diagrams.net//)
+[<img height="400px" width="400px" alt="Spring Boot with Kafka diagram" src="https://github.com/dmullandev/spring-boot-spring-kafka/blob/main/docs/spring-boot-kafka-diagrams.PNG"/>](https://app.diagrams.net//)
 </br>
 
 ### Where to start
@@ -21,7 +21,7 @@ Using IDE menu or specifying maven goal '**spring-boot:run**' to start the produ
 Using postman:
 1) Set HTTP POST request: http://localhost:8099/api/v1/businessobjects
 2) Set body as JSON with following format:
-'''json
+```json
 {
     "businessObjectId" : 999,
     "basicBusinessObjectInformation" : {
@@ -29,4 +29,4 @@ Using postman:
         "objectDescription" : "Object for relaying kafka object information"
     }
 }
-'''
+```
