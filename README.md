@@ -21,7 +21,6 @@ Using IDE menu or specifying maven goal '**spring-boot:run**' to start the produ
 Using postman:
 1) Set HTTP POST request: http://localhost:8099/api/v1/businessobjects
 2) Set body as JSON with following format:
-3) 
 ```json
     {
         "businessObjectId" : 999,
