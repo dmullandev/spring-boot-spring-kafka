@@ -12,7 +12,7 @@ To start with clone this entire repo - then build the separate projects by their
 Local install is needed of both Kafka + Zookeeper (Kafka 3.4+ contains packaged zookeeper, separate install not needed)
 See link: https://kafka.apache.org/quickstart
 
-Post install - start using files 1)**zookeeper-server-start** 2)**kafka-server-start**
+Post install - start using files 1) **zookeeper-server-start** 2) **kafka-server-start**
 
 **Start producer App**\
 Using IDE menu or specifying maven goal '**spring-boot:run**' to start the producer.
@@ -21,12 +21,13 @@ Using IDE menu or specifying maven goal '**spring-boot:run**' to start the produ
 Using postman:
 1) Set HTTP POST request: http://localhost:8099/api/v1/businessobjects
 2) Set body as JSON with following format:
+3) 
 ```json
-{
-    "businessObjectId" : 999,
-    "basicBusinessObjectInformation" : {
-        "objectType" : "KAFKA_TYPE",
-        "objectDescription" : "Object for relaying kafka object information"
+    {
+        "businessObjectId" : 999,
+        "basicBusinessObjectInformation" : {
+            "objectType" : "KAFKA_TYPE",
+            "objectDescription" : "Object for relaying kafka object information"
+        }
     }
-}
 ```
