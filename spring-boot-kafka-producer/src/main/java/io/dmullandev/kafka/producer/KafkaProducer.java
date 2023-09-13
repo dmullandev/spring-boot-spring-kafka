@@ -17,11 +17,11 @@ public class KafkaProducer {
 
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
+    public KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    void sendMessage(String topicName, String message) {
+    private void sendMessage(String topicName, String message) {
         kafkaTemplate.send(topicName, message);
     }
 

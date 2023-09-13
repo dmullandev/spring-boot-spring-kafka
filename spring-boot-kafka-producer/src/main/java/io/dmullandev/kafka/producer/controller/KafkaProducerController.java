@@ -1,9 +1,12 @@
 package io.dmullandev.kafka.producer.controller;
 
+import java.util.concurrent.CompletableFuture;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,23 +31,11 @@ public class KafkaProducerController {
     @PostMapping
     public void publish(@RequestBody BusinessObject businessObject) {
         LOG.info("Received business object {}", businessObject);
-        kafkaTemplateBusinessObject.send(KafkaAppConstants.APP_TOPIC_BUSINESSOBJECT, businessObject);
-    }
+        CompletableFuture<SendResult<String, BusinessObject>> completableFuture = kafkaTemplateBusinessObject.send(KafkaAppConstants.APP_TOPIC_BUSINESSOBJECT,
+                businessObject);
 
-    /*
-     * public static void main(String[] args) { BusinessObject object = new
-     * BusinessObject(); BasicBusinessObjectInformation bboi = new
-     * BasicBusinessObjectInformation(); bboi.setObjectType("KAFKA_TYPE");
-     * bboi.setObjectDescription("Object for relaying kafka object information");
-     * object.setBusinessObjectId(999);
-     * object.setBasicBusinessObjectInformation(bboi);
-     * 
-     * ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter(); try
-     * { String json = ow.writeValueAsString(object); System.out.println(json); }
-     * catch (JsonProcessingException e) {
-     * 
-     * }
-     * 
-     * }
-     */
+        completableFuture.whenComplete((result, throwable) -> {
+            LOG.info("CompletableFuture: " + completableFuture + " - " + result.getRecordMetadata());
+        });
+    }
 }
