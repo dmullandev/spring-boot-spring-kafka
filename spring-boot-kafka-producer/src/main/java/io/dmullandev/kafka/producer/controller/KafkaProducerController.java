@@ -19,10 +19,9 @@ import io.dmullandev.kafka.model.BusinessObject;
 @RequestMapping("api/v1/businessobjects")
 public class KafkaProducerController {
 
-    @Autowired
-    private KafkaTemplate<String, BusinessObject> kafkaTemplateBusinessObject;
-
     private static final Logger LOG = LogManager.getLogger(KafkaProducerController.class);
+    
+    private KafkaTemplate<String, BusinessObject> kafkaTemplateBusinessObject;
 
     public KafkaProducerController(KafkaTemplate<String, BusinessObject> kafkaTemplateBusinessObject) {
         this.kafkaTemplateBusinessObject = kafkaTemplateBusinessObject;

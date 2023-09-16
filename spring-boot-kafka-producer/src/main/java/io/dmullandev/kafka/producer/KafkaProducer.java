@@ -9,6 +9,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import io.dmullandev.kafka.constants.KafkaAppConstants;
+
 @Component
 public class KafkaProducer {
     private static final Logger log = LogManager.getLogger(KafkaProducer.class);
@@ -28,7 +30,7 @@ public class KafkaProducer {
     @Scheduled(fixedRate = 5000)
     public void reportCurrentTime() {
         String timestamp = dateTimeFormat.format(LocalDateTime.now());
-        sendMessage("io-dmullandev-timestamp", timestamp);
+        sendMessage(KafkaAppConstants.APP_TOPIC_TIMESTAMP, timestamp);
         log.info("Sent: {}", timestamp);
     }
 }

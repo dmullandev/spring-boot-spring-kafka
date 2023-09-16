@@ -64,13 +64,19 @@ public class KafkaProducerConfiguration {
 
     @Bean
     public NewTopic topicTimestamp() {
-        return TopicBuilder.name("io-dmullandev-timestamp")
+        return TopicBuilder.name(KafkaAppConstants.APP_TOPIC_TIMESTAMP)
                            .build();
     }
 
     @Bean
     public NewTopic topicBusinessObject() {
         return TopicBuilder.name(KafkaAppConstants.APP_TOPIC_BUSINESSOBJECT)
+                           .build();
+    }
+
+    @Bean
+    public NewTopic topicWikimedia() {
+        return TopicBuilder.name(KafkaAppConstants.APP_TOPIC_WIKIMEDIA)
                            .build();
     }
 

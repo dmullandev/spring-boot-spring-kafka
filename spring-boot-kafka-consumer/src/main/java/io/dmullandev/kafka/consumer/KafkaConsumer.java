@@ -5,12 +5,21 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import io.dmullandev.kafka.constants.KafkaAppConstants;
+
+/**
+ * Consumer for timestamp strings on the timestamp topic.
+ * 
+ * @author dan
+ *
+ */
 @Component
 public class KafkaConsumer {
-    private static final Logger log = LogManager.getLogger(KafkaConsumer.class);
+    private static final Logger LOG = LogManager.getLogger(KafkaConsumer.class);
 
-    @KafkaListener(topics = "io-dmullandev-timestamp")
+    @KafkaListener(topics = KafkaAppConstants.APP_TOPIC_TIMESTAMP)
     void listener(String timestamp) {
-        log.info("Receiving String: {}", timestamp);
+        LOG.info("Receiving String: {}", timestamp);
     }
+
 }
