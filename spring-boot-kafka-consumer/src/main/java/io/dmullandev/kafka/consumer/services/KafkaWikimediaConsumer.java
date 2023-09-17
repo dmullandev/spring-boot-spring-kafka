@@ -18,7 +18,7 @@ public class KafkaWikimediaConsumer {
 
     private static final Logger LOG = LogManager.getLogger(KafkaWikimediaConsumer.class);
 
-    @KafkaListener(topics = KafkaAppConstants.APP_TOPIC_WIKIMEDIA)
+    @KafkaListener(topics = KafkaAppConstants.APP_TOPIC_WIKIMEDIA, groupId = KafkaAppConstants.APP_TOPIC_BASE + "-group")
     void listenerWikimediaEvent(String wikimediaEvent) {
         LOG.info("Receiving wikimediaEvent: {}", wikimediaEvent);
     }

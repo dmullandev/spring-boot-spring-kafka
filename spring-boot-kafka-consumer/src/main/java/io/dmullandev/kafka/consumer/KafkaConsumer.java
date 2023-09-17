@@ -17,7 +17,7 @@ import io.dmullandev.kafka.constants.KafkaAppConstants;
 public class KafkaConsumer {
     private static final Logger LOG = LogManager.getLogger(KafkaConsumer.class);
 
-    @KafkaListener(topics = KafkaAppConstants.APP_TOPIC_TIMESTAMP)
+    @KafkaListener(topics = KafkaAppConstants.APP_TOPIC_TIMESTAMP, groupId = KafkaAppConstants.APP_TOPIC_BASE + "-group")
     void listener(String timestamp) {
         LOG.info("Receiving String: {}", timestamp);
     }
