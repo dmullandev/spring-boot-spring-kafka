@@ -37,6 +37,7 @@ public class KafkaEventsSourceProducer {
 
         BackgroundEventHandler eventHandler = new WikiMediaChangesHandler(kafkaTemplate, KafkaAppConstants.APP_TOPIC_WIKIMEDIA);
         BackgroundEventSource.Builder builder = new BackgroundEventSource.Builder(eventHandler, new EventSource.Builder(URI.create(url)));
+
         BackgroundEventSource eventSource = builder.build();
 
         eventSource.start();
