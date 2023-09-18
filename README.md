@@ -30,3 +30,19 @@ Using postman:
         }
     }
 ```
+
+### Producers
+**Timestamp Producer**\
+This producer sends a string representation of the current timestamp to the timestamp topic.
+
+**BusinessObject Producer**\
+This producer sends a custom java object to the businessobject topic as a result of a REST http POST call with business information. REST handling by the class 'KafkaProducerController'.
+
+**Wikimedia Producer**\
+This producer sends a string to the wikimedia topic. The string of an event with the event source being the wikimedia recent changes endpoint, this was accomplished by using the OkHTTP library.
+
+**Timestamp Consumer**\
+This is a basic consumer listening on the timestamp topic and receives the string representation of the timestamp at the time of sending from the producer.
+
+**Wikimedia Consumer**\
+This consumer listens on the wikimedia topic. When the event string is consumed a custom java object 'WikimediaData' is created and the event is set as one of the fields. This object is then saved into a MySQL database using Spring JPA.
