@@ -21,7 +21,7 @@ import io.dmullandev.kafka.constants.KafkaAppConstants;
 /**
  * This class sets the different consumer configurations.
  * 
- * @author dan
+ * @author dmullandev
  *
  */
 @Configuration

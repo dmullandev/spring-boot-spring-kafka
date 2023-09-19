@@ -12,7 +12,7 @@ import io.dmullandev.kafka.consumer.repository.WikimediaDataRepository;
 /**
  * Consumer for wikimedia events on the wikimedia topic.
  * 
- * @author dan
+ * @author dmullandev
  *
  */
 @Service

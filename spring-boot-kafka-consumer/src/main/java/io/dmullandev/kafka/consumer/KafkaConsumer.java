@@ -10,7 +10,7 @@ import io.dmullandev.kafka.constants.KafkaAppConstants;
 /**
  * Consumer for timestamp strings on the timestamp topic.
  * 
- * @author dan
+ * @author dmullandev
  *
  */
 @Component

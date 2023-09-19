@@ -18,7 +18,7 @@ import io.dmullandev.kafka.producer.handlers.WikiMediaChangesHandler;
 /**
  * Producer using an event source
  * 
- * @author dan
+ * @author dmullandev
  *
  */
 @Service
