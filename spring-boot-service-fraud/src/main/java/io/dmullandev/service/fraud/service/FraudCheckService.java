@@ -9,7 +9,8 @@ import io.dmullandev.service.fraud.repository.FraudCheckHistoryRepository;
 public record FraudCheckService(FraudCheckHistoryRepository fraudCheckHistoryRepository) {
 
     public boolean isFraudulentCustomer(Integer customerId) {
-        fraudCheckHistoryRepository.save(FraudCheckHistory.builder().id(customerId).createdAt(LocalDateTime.now()).build());
+        fraudCheckHistoryRepository.save(
+                        FraudCheckHistory.builder().id(customerId).isFraudster(false).createdAt(LocalDateTime.now()).build());
         return false;
     }
 }

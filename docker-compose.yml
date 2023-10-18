@@ -35,13 +35,3 @@ services:
     networks:
       - postgres
     restart: unless-stopped
-  customer:
-    image: dmullandev/customer:latest
-    container_name: customer
-    ports:
-      - "8080:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      - postgres
-    depends_on:
-      - postgres

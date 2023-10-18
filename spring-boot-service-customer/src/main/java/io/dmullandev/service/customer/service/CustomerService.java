@@ -1,12 +1,14 @@
 package io.dmullandev.service.customer.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import io.dmullandev.service.customer.model.Customer;
 import io.dmullandev.service.customer.model.CustomerRegistrationRequest;
 import io.dmullandev.service.customer.repository.CustomerRepository;
+import io.dmullandev.service.customer.response.FraudCheckResponse;
 
 @Service
-public record CustomerService(CustomerRepository customerRepository) {
+public record CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate) {
 
     public void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer = Customer.builder()
@@ -14,8 +16,14 @@ public record CustomerService(CustomerRepository customerRepository) {
                                     .lastName(request.lastName())
                                     .email(request.email())
                                     .build();
+        customerRepository.saveAndFlush(customer);
+        FraudCheckResponse fraudCheckResponse = restTemplate.getForObject("http://localhost:8081/api/v1/fraudCheck/{customerId}",
+                        FraudCheckResponse.class,
+                        customer.getId());
 
-        customerRepository.save(customer);
+        if (fraudCheckResponse.isFraudster()) {
+            throw new IllegalStateException("Customer is a fraudster");
+        }
     }
 
 }
