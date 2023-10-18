@@ -17,7 +17,8 @@ public record CustomerService(CustomerRepository customerRepository, RestTemplat
                                     .email(request.email())
                                     .build();
         customerRepository.saveAndFlush(customer);
-        FraudCheckResponse fraudCheckResponse = restTemplate.getForObject("http://localhost:8081/api/v1/fraudCheck/{customerId}",
+
+        FraudCheckResponse fraudCheckResponse = restTemplate.getForObject("http://FRAUD/api/v1/fraudCheck/{customerId}",
                         FraudCheckResponse.class,
                         customer.getId());
 
@@ -25,5 +26,4 @@ public record CustomerService(CustomerRepository customerRepository, RestTemplat
             throw new IllegalStateException("Customer is a fraudster");
         }
     }
-
 }
