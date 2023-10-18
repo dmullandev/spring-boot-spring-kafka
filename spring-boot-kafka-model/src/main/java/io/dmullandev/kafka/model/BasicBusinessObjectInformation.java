@@ -3,7 +3,7 @@ package io.dmullandev.kafka.model;
 /**
  * Some basic information identifying an object
  * 
- * @author dan
+ * @author dmullandev
  *
  */
 public class BasicBusinessObjectInformation {

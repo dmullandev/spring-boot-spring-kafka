@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 /**
  * Entity class for the Wikimedia type
@@ -16,6 +17,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "wikimedia_recentchange")
+@Data
 public class WikimediaData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,33 +26,4 @@ public class WikimediaData {
     @Lob
     @Column(name = "wikimediaEventData", length = 32000)
     private String wikimediaEventData;
-
-    /**
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the wikimediaEventData
-     */
-    public String getWikimediaEventData() {
-        return wikimediaEventData;
-    }
-
-    /**
-     * @param wikimediaEventData the wikimediaEventData to set
-     */
-    public void setWikimediaEventData(String wikimediaEventData) {
-        this.wikimediaEventData = wikimediaEventData;
-    }
-
 }

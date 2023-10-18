@@ -26,6 +26,6 @@ replay_pid*
 *.classpath
 *.project
 *.settings/
+*.factorypath
 target/
 bin/
-src/main/resources/db_commands

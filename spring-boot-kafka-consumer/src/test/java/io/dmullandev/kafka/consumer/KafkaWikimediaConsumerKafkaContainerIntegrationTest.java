@@ -1,10 +1,8 @@
 package io.dmullandev.kafka.consumer;
 
 import static org.awaitility.Awaitility.await;
-
 import java.time.Duration;
 import java.util.Optional;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +18,6 @@ import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
-
 import io.dmullandev.kafka.constants.KafkaAppConstants;
 import io.dmullandev.kafka.consumer.entity.WikimediaData;
 import io.dmullandev.kafka.consumer.repository.WikimediaDataRepository;
@@ -31,10 +28,10 @@ import io.dmullandev.kafka.consumer.repository.WikimediaDataRepository;
  * @author dmullandev
  *
  */
-@SpringBootTest(classes = { KafkaWikimediaConsumer.class, WikimediaDataRepository.class })
+@SpringBootTest
 @TestPropertySource(properties = {
-        "spring.kafka.consumer.auto-offset-reset=earliest",
-        "spring.datasource.url=jdbc:tc:mysql:8.0.32:///db",
+                "spring.kafka.consumer.auto-offset-reset=earliest",
+                "spring.datasource.url=jdbc:tc:mysql:8.0.32:///db",
 })
 @Testcontainers
 @EnableAutoConfiguration
@@ -75,7 +72,8 @@ public class KafkaWikimediaConsumerKafkaContainerIntegrationTest {
                    LOG.info("shouldHandleConsumingWikimediaAndDBSave polling...");
                    Optional<WikimediaData> optWikimediaData = wikimediaDataRepository.findById(2L);
                    org.assertj.core.api.Assertions.assertThat(optWikimediaData).isPresent();
-                   org.assertj.core.api.Assertions.assertThat(optWikimediaData.get().getWikimediaEventData().equals(TEST_WIKIMEDIA_EVENT_DATA_2));
+                   org.assertj.core.api.Assertions.assertThat(
+                                   optWikimediaData.get().getWikimediaEventData().equals(TEST_WIKIMEDIA_EVENT_DATA_2));
                });
     }
 }
