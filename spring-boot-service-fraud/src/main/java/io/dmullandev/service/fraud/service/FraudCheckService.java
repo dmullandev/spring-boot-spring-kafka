@@ -10,7 +10,11 @@ public record FraudCheckService(FraudCheckHistoryRepository fraudCheckHistoryRep
 
     public boolean isFraudulentCustomer(Integer customerId) {
         fraudCheckHistoryRepository.save(
-                        FraudCheckHistory.builder().id(customerId).isFraudster(false).createdAt(LocalDateTime.now()).build());
+                        FraudCheckHistory.builder()
+                                         .id(customerId)
+                                         .isFraudster(false)
+                                         .createdAt(LocalDateTime.now())
+                                         .build());
         return false;
     }
 }

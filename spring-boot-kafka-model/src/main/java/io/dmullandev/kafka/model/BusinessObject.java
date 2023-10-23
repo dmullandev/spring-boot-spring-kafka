@@ -3,16 +3,14 @@ package io.dmullandev.kafka.model;
 /**
  * Business object containing businessy stuff!
  * 
- * @author dan
+ * @author dmullandevv
  *
  */
 public class BusinessObject {
     private int businessObjectId;
-    // has-a
     private BasicBusinessObjectInformation basicBusinessObjectInformation;
 
-    public BusinessObject() {
-    }
+    public BusinessObject() {}
 
     public BusinessObject(int businessObjectId) {
         this.businessObjectId = businessObjectId;
@@ -41,8 +39,7 @@ public class BusinessObject {
     }
 
     /**
-     * @param basicBusinessObjectInformation the basicBusinessObjectInformation to
-     *                                       set
+     * @param basicBusinessObjectInformation the basicBusinessObjectInformation to set
      */
     public void setBasicBusinessObjectInformation(BasicBusinessObjectInformation basicBusinessObjectInformation) {
         this.basicBusinessObjectInformation = basicBusinessObjectInformation;
